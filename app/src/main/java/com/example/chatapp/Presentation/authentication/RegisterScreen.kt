@@ -9,8 +9,9 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Done
+import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
@@ -65,25 +66,27 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
             Row(verticalAlignment = Alignment.CenterVertically) {
 
                 RadioButton(selected = radioButtonSwitch, onClick = { radioButtonSwitch = !radioButtonSwitch })
-                TextButton(onClick = { /*TODO*/ }) {
+                TextButton(onClick = { Log.d("TERMS OF SERVICE", "Open") }) {
                     Text(text = "I agree to the terms of service")
                 }
 
 
             }
 
-            Button(onClick = { if (radioButtonSwitch){
+            Button(modifier = Modifier, shape = RoundedCornerShape(14.dp)
+                ,onClick = { if (radioButtonSwitch){
                 //register account
                 Log.d("RegisterScreen: ", "Yes ")
                 Log.d("Register Password", password)
                 Log.d("Register Password", password2)
             }else{
+                //Don't
                 Log.d("RegisterScreen: ", "No ")
             }
             }) {
                 Text(text = "Register")
                 Spacer(modifier = modifier.width(10.dp))
-                Icon(imageVector = Icons.Outlined.Done, contentDescription = "Done")
+                Icon(imageVector = Icons.Outlined.CheckCircle, contentDescription = "Done")
 
             }
 
