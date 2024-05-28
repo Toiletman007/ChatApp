@@ -1,4 +1,4 @@
-package com.example.chatapp.Presentation.authentication
+package com.example.chatapp.presentation.authentication
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
