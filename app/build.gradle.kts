@@ -1,9 +1,11 @@
 plugins {
-    id("com.google.gms.google-services")
+
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.firebase)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -43,7 +45,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     packaging {
         resources {
@@ -62,6 +64,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.play.services.auth)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.volley)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -69,10 +74,23 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+//    firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
+//    navigation
     implementation(libs.androidx.navigation.compose)
+//    hilt ksp
     implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation)
+
     ksp(libs.hilt.android.compiler)
-    implementation("androidx.compose.material:material-icons-extended:1.5.3")
+//    Icons
+    implementation(libs.androidx.material.icons.extended)
+//    Coil for async image
+    implementation(libs.coil.compose)
+//    Credential manager
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation (libs.googleid)
+
 }
