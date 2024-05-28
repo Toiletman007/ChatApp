@@ -1,10 +1,12 @@
-package com.example.chatapp.Presentation.authentication.components
+package com.example.chatapp.presentation.authentication.components
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -22,13 +24,16 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.example.chatapp.Presentation.ui.theme.DarkGreen
+import com.example.chatapp.presentation.ui.theme.DarkGreen
 
 @Composable
 fun PasswordTextField(
     modifier: Modifier = Modifier,
+    text: String,
     value: String,
-    onValueChange: (String) -> Unit
+    color:Boolean = true,
+    onValueChange: (String) -> Unit,
+
 ) {
     var passwordVisible by rememberSaveable { mutableStateOf(false) }
     val gradientColors = listOf(
@@ -42,22 +47,22 @@ fun PasswordTextField(
     )
     val brush = Brush.linearGradient(
         colors =
-            if (passwordVisible) {
-                listOf(Color.Black, Color.Black)
-            } else {
-                gradientColors
-            }
+        if (passwordVisible || !color) {
+            listOf(Color.Black, Color.Black)
+        } else {
+            gradientColors
+        }
 
     )
     OutlinedTextField(
-        modifier = Modifier.width(280.dp),
+        modifier = Modifier.width(360.dp),
         value = value,
         onValueChange = {
             if (it.length <= 106) {
                 onValueChange(it)
             }
         },
-        label = { Text("Password") },
+        label = { Text(text) },
         visualTransformation = if (passwordVisible) {
             VisualTransformation.None
         } else {
@@ -82,6 +87,13 @@ fun PasswordTextField(
                     )
                 }
             }
+        },
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Outlined.Lock,
+                contentDescription = null,
+                modifier = Modifier.size(25.dp)
+            )
         }
     )
 }
