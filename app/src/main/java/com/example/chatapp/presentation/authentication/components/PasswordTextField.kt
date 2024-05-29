@@ -19,12 +19,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.example.chatapp.presentation.ui.theme.DarkGreen
+import com.example.compose.DarkGreen
 
 @Composable
 fun PasswordTextField(
@@ -48,7 +49,7 @@ fun PasswordTextField(
     val brush = Brush.linearGradient(
         colors =
         if (passwordVisible || !color) {
-            listOf(Color.Black, Color.Black)
+            listOf(Black, Black)
         } else {
             gradientColors
         }

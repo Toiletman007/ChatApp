@@ -21,14 +21,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.chatapp.presentation.authentication.components.EmailTextField
 import com.example.chatapp.presentation.authentication.components.NameTextField
 import com.example.chatapp.presentation.authentication.components.PasswordTextField
-
+@Preview
 @Composable
-fun LoginScreen (modifier: Modifier = Modifier, onSignInClick: ()-> Unit) {
+fun LoginScreen (modifier: Modifier = Modifier) {
     var name by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val radioButtonSwitch by remember { mutableStateOf(false) }
