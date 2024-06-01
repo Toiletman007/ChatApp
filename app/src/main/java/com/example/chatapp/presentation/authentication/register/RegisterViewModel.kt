@@ -19,7 +19,7 @@ class RegisterViewModel @Inject constructor(
         password: String? = null,
         password2: String? = null,
         name: String? = null,
-        checkBoxSwitch: Boolean?
+        checkBoxSwitch: Boolean? = null
     ) {
         state.value = state.value.copy(
             email = email ?: state.value.email,
