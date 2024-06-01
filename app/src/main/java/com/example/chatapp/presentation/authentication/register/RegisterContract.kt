@@ -16,7 +16,7 @@ data class RegisterState(
  * passed to the coordinator to handle
  **/
 data class RegisterActions(
-    val onClick: () -> Unit = {},
+    val onRegister: () -> Unit = {},
     val onEmailChange: (String) -> Unit = {},
     val onPasswordChange: (String) -> Unit = {},
     val onPassword2Change: (String) -> Unit = {},
