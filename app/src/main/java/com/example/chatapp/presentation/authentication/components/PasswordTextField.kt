@@ -26,6 +26,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.compose.DarkGreen
+import com.example.compose.MildlyDarkGreen
 
 @Composable
 fun PasswordTextField(
@@ -42,7 +43,7 @@ fun PasswordTextField(
         Color.Yellow,
         Color.Green,
         Color.Green,
-        DarkGreen,
+        MildlyDarkGreen,
         DarkGreen,
         DarkGreen,
     )
@@ -53,7 +54,6 @@ fun PasswordTextField(
         } else {
             gradientColors
         }
-
     )
     OutlinedTextField(
         modifier = Modifier.width(360.dp),
