@@ -1,7 +1,5 @@
 package com.example.chatapp.presentation.authentication.register
 
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.chatapp.presentation.authentication.components.EmailTextField
@@ -35,9 +32,7 @@ fun RegisterScreen(
     state: RegisterState,
     actions: RegisterActions,
 ) {
-
         val context = LocalContext.current
-
 
         Column(
             verticalArrangement = Arrangement.SpaceEvenly,
@@ -59,9 +54,9 @@ fun RegisterScreen(
 
                     RadioButton(
                         selected = state.checkBoxSwitch,
-                        onClick = { state.checkBoxSwitch = !state.checkBoxSwitch },
+                        onClick = { actions.onCheckBoxSwitchChange(state.checkBoxSwitch) },
                     )
-                    TextButton(onClick = { Log.d("TERMS OF SERVICE", "Open") }) {
+                    TextButton(onClick = {  }) {
                         Text(text = "I agree to the terms of service")
                     }
 
@@ -69,27 +64,7 @@ fun RegisterScreen(
                 }
 
                 Button(modifier = Modifier, shape = RoundedCornerShape(14.dp), onClick = {
-                    if (state.checkBoxSwitch) {
-                        if (state.password == state.password2) {
-                            if (state.password.length > 8) {
-                                //register account
-
-
-                            } else {
-                                Toast.makeText(context, "Password needs to be at least 8 characters", Toast.LENGTH_SHORT).show()
-                            }
-                            Log.d("RegisterScreen: ", "Yes ")
-                        } else {
-                            Toast.makeText(context, "Passwords don't match", Toast.LENGTH_SHORT).show()
-
-                        }
-
-                    } else {
-
-                        Toast.makeText(context, "Accept the Terms of Service", Toast.LENGTH_SHORT)
-                            .show()
-
-                    }
+                    actions.onRegister()
                 }) {
                     Text(text = "Register")
                     Spacer(modifier = modifier.width(10.dp))
@@ -98,13 +73,13 @@ fun RegisterScreen(
             }
         }
     }
-
-@Composable
-@Preview(name = "Register")
-private fun RegisterScreenPreview() {
-    RegisterScreen(
-        modifier = Modifier,
-        state = RegisterState(),
-        actions = RegisterActions()
-    )
-}
+//
+//@Composable
+//@Preview(name = "Register")
+//private fun RegisterScreenPreview() {
+//    RegisterScreen(
+//        modifier = Modifier,
+//        state = RegisterState(),
+//        actions = RegisterActions()
+//    )
+//}
