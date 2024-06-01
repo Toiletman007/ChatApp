@@ -1,5 +1,6 @@
 package com.example.chatapp.presentation.authentication.register
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -11,12 +12,33 @@ import androidx.hilt.navigation.compose.hiltViewModel
 class RegisterCoordinator(
     private val viewModel: RegisterViewModel,
 ) {
+
     val screenStateFlow = viewModel.state
 
     fun doStuff() {
         // TODO Handle UI Action
 
     }
+    fun onRegister(){
+        Log.d("Sel", "TEST@!@$@!#$@#%R@#$%#!$%#!$%!#@$")
+    }
+    fun onChangeName(name: String){
+        viewModel.changeState(name = name)
+    }
+    fun onChangeEmail(email: String){
+        viewModel.changeState(email = email)
+    }
+    fun onChangePassword(password: String){
+        viewModel.changeState(password = password)
+    }
+    fun onChangePassword2(password2: String){
+        viewModel.changeState(password2 = password2)
+    }
+    fun onCheckBoxSwitchChange(checkBoxState: Boolean){
+        viewModel.changeState(checkBoxSwitch = !checkBoxState)
+    }
+//    fun changeState(): (String?) -> Unit = { viewModel.changeState("SUSAKIFSODG")
+//    }
 
 }
 
@@ -26,5 +48,10 @@ fun rememberRegisterCoordinator(
 ): RegisterCoordinator {
     return remember(viewModel) {
         RegisterCoordinator(viewModel, )
+
+
+
     }
+
+
 }
